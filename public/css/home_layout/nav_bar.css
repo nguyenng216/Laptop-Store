@@ -1,0 +1,66 @@
+/* ===== SIDEBAR / MENU BÊN TRÁI — luôn nằm NGAY DƯỚI HEADER ===== */
+
+/* Biến cấu hình nhanh:
+   --header-height:   chiều cao header
+   --header-margin-v: tổng margin trên+dưới của header
+   --header-tweak:    tinh chỉnh thêm vài px cho vị trí top
+   --sidebar-w:       bề rộng sidebar
+*/
+:root{
+  --header-height: 80px;
+  --header-margin-v: 20px;
+  --header-tweak: 0px;
+  --sidebar-w: 220px;
+}
+
+#sidebarMenu{
+  position: fixed; /* cố định theo viewport */
+  top: calc(var(--header-height, 80px) + var(--header-margin-v, 20px) + var(--header-tweak, 0px)); /* nằm ngay dưới header */
+  left: 10px;
+  width: var(--sidebar-w);
+
+  /* KHU VỰC CẦN CHỈNH: giới hạn chiều cao + bật cuộn nội dung */
+  max-height: 520px;    /* chiều cao tối đa của khung sidebar */
+  overflow-y: auto;     /* phần vượt quá sẽ cuộn dọc */
+
+  background: #fff;
+  border: 2px solid #d32f2f; /* viền đỏ chủ đạo */
+  border-radius: 4px;
+  padding: 12px;
+  z-index: 900;         /* nằm trên nền dưới header */
+  margin-top: 0;
+}
+
+/* Tiêu đề & icon trong sidebar */
+#sidebarMenu h5{
+  margin: 4px 0 12px;
+  color: #d32f2f;
+  font-weight: 700;
+}
+#sidebarMenu .fa-solid{
+  width: 1.2rem;  /* cố định độ rộng cho canh thẳng hàng */
+  color: #d32f2f;
+}
+
+/* Link menu trong sidebar */
+#sidebarMenu .nav-link{
+  color: #333;
+  margin-bottom: .5rem;
+  padding: 6px 8px;
+  border-radius: 4px;
+  display: block;
+}
+#sidebarMenu .nav-link:hover{
+  background: #fde8e8;  /* đỏ nhạt khi hover */
+  color: #d32f2f;
+}
+
+/* Responsive: dưới 992px, sidebar không fixed nữa, rơi về luồng bình thường */
+@media (max-width: 992px){
+  #sidebarMenu{
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 10px;
+  }
+}

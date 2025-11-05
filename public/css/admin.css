@@ -1,0 +1,65 @@
+/* Nền phần copyright/footer */
+copyright {
+    background-color: #1a252f;
+}
+
+/* Cột cố định rộng 250px (hữu ích cho sidebar) */
+.fixed {
+    -ms-flex: 0 0 250px; /* IE/Edge cũ */
+    flex: 0 0 250px;     /* không co giãn, cố định 250px */
+}
+
+/* Nền xám nhạt cho vùng nội dung */
+.content-grey {
+    background-color: #f8f9fc;
+}
+
+/* Thu gọn khoảng cách trước/sau đường kẻ */
+hr {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+/* Logo lớn (full bề ngang khối chứa) */
+.img-logo-full{
+  width: 40%;          /* rộng bằng 40% khối cha */
+  height: auto;        /* giữ tỉ lệ ảnh */
+  display: block;
+  border-radius: .75rem; /* bo góc chữ nhật */
+}
+
+/* Chữ “Admin” (màu xám, nhỏ hơn, mảnh) */
+.profile-font {
+    color: #858796 !important;
+    font-size: 80%;
+    font-weight: 400;
+}
+
+/* Header của thẻ card: nền xám nhạt, viền dưới */
+.card-header {
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+/* 🟡 Tuỳ chọn: avatar/ảnh profile nhỏ lại trên màn hình rất nhỏ */
+@media (max-width: 576px) {
+    .img-profile {
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+/* Logo nhỏ ở góc phải header */
+.img-logo-small {
+  width: 120px;         /* kích thước mặc định */
+  height: auto;         /* giữ tỉ lệ ảnh */
+  border-radius: 10px;  /* bo góc nhẹ */
+  object-fit: contain;  /* hiển thị đầy đủ logo, không cắt */
+}
+
+/* Mobile: thu nhỏ logo hơn nữa */
+@media (max-width: 576px) {
+  .img-logo-small {
+    width: 45px;
+  }
+}

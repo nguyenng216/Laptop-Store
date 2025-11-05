@@ -1,0 +1,12 @@
+/* Nền trắng tổng thể */
+:root{
+  --red: #d32f2f;
+  --red-100: #fde8e8;
+  --text: #222;
+}
+
+.background{
+  background:#fff;
+  color:var(--text);
+  min-height:100vh;
+}

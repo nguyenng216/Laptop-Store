@@ -1,0 +1,87 @@
+/* ===== NỘI DUNG & LƯỚI SẢN PHẨM — đỏ & trắng ===== */
+
+/* Reset nhỏ: chuẩn hoá box model & thẻ cơ bản */
+*,*::before,*::after{ box-sizing:border-box; }
+img{ display:block; max-width:100%; height:auto; }
+a{ color:inherit; text-decoration:none; }
+
+/* Biến nhanh: khoảng cách, kích thước card, bề ngang tối đa */
+:root{
+  --gap: 12px;            /* khoảng cách giữa thẻ */
+  --card: 220px;          /* bề rộng mỗi card sản phẩm */
+  --wrap-max: 1200px;     /* bề ngang tối đa dãy sản phẩm */
+}
+
+/* Vùng nội dung chính: chừa chỗ cho sidebar (phụ thuộc --sidebar-w ở nav_bar.css) */
+.home_container{
+  margin: 17px 12px 60px calc(var(--sidebar-w) + 24px); /* lề trái = rộng sidebar + 24px */
+  padding: 50px;
+  background: #fff;
+  border: 1px solid #d32f2f; /* viền đỏ chủ đạo */
+  border-radius: 4px;
+  color: #222;
+  position: relative;
+  z-index: 1; /* nằm dưới header, trên nền */
+}
+/* Khi không có sidebar: bỏ khoảng chừa bên trái */
+.no-sidebar .home_container{
+  margin: 17px 12px 60px 12px;
+}
+
+/* Thanh phân cách đỏ mảnh */
+.border_full{
+  height: 6px;
+  margin: 12px 0;
+  background: #d32f2f;
+  border-radius: 3px;
+}
+
+/* Giới hạn bề ngang & căn giữa khối sản phẩm */
+.products_wrap{ max-width: var(--wrap-max); margin-inline:auto; }
+
+/* Hàng sản phẩm: flex wrap + căn giữa */
+.row_banner{
+  display:flex; 
+  flex-wrap:wrap; 
+  gap:var(--gap); 
+  justify-content:center;
+}
+
+/* Khung từng sản phẩm: cố định width để canh giữa đẹp */
+.box_banner{
+  flex:0 0 var(--card);   /* không co giãn, giữ đúng bề rộng card */
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:8px;
+  padding:8px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; /* hover mượt */
+}
+.box_banner:hover{
+  transform: translateY(-2px);                      /* nổi nhẹ lên */
+  box-shadow: 0 6px 16px rgba(211,47,47,.18);       /* đổ bóng tông đỏ */
+  border-color: #d32f2f;                            /* viền đỏ khi hover */
+}
+
+/* Bố cục card & ảnh: cột, khoảng cách đều */
+.card{ display:flex; flex-direction:column; gap:8px; width:100%; }
+
+/* Ảnh vuông, không méo; có nền chờ màu hồng nhạt */
+.img_banner{
+  width:100%;
+  aspect-ratio:1/1;         /* giữ tỉ lệ 1:1 (cần trình duyệt hỗ trợ) */
+  object-fit:cover;         /* cắt tràn để lấp đầy khung */
+  border-radius:6px;
+  background:#fde8e8;       /* nền khi ảnh chưa tải */
+}
+
+/* Văn bản & giá */
+.size_text_banner{ margin:0; font-size:14px; line-height:1.4; }
+.discount_tag{ color:#d32f2f; font-weight:700; } /* nhấn mạnh phần giảm giá */
+
+/* Responsive: giảm kích thước card theo breakpoint Bootstrap-ish */
+@media (max-width:1200px){ :root{ --card:200px; } }
+@media (max-width:992px){
+  :root{ --card:180px; }
+  .home_container{ margin:12px; } /* mobile/tablet: không chừa sidebar */
+}
+@media (max-width:576px){ :root{ --card:150px; } }
